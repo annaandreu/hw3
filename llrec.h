@@ -84,6 +84,28 @@ Node* llfilter(Node* head, Comp pred)
     // Provide your implementation below
     //*********************************************
 
+  //traversed down the list to get all the addresses first
+	
+	if(head == nullptr){ // if list is empty OR we have reached the end of the list 
+    return nullptr;
+  }
+
+	//recursiveley call to go through whole list 
+	Node* position = llfilter(head -> next, pred); 
+
+	if(pred(head -> val) == false){ // node should stay
+		head -> next = position; // go to next node 
+		return head; // return adress in case anyone needs it 
+	}
+
+	else{ // should be removed
+		delete head; // delete address 
+		return position; // return address address after u that is still alive
+	}
+
+//llfilter(head->next, pred);
+
+return position;
 
 }
 
